@@ -1,5 +1,3 @@
 echo "Hii Guys"
 #adding a new line
 echo "Day2"
-#adding another line
-echo "day 3"
