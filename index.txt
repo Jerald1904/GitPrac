@@ -1,3 +1,1 @@
-echo "Hii Guys"
-#adding a new line
-echo "Day2"
+echo "Hii Guys" enada ithu
