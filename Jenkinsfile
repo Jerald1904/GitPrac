@@ -19,3 +19,9 @@ pipeline {
     }
 }
 
+post {
+    success {
+        archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+    }
+}
+
