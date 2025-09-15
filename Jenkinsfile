@@ -25,3 +25,11 @@ post {
     }
 }
 
+post {
+    failure {
+        mail to: 'team@example.com',
+             subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+             body: "Check console output at ${env.BUILD_URL}"
+    }
+}
+
