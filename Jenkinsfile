@@ -16,5 +16,15 @@ pipeline {
                 echo "Deploying application..."
             }
         }
+	stage('Docker'){
+	    steps {
+	        script {
+                    sh """
+                        docker build -t app .
+                        docker run -d -p6000:8080 app:latest
+                    """
+                }
+            }
+        }
     }
 }
