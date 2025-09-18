@@ -21,7 +21,7 @@ pipeline {
 	        script {
                     sh """
                         docker build -t app .
-                        docker run -d -p6000:8080 app:latest
+                        docker run -d -p5000:5000 app:latest
                     """
                 }
             }
