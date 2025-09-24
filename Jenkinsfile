@@ -38,5 +38,15 @@ pipeline {
                 }
             }
         }
+        stage('Run Docker Image') {
+            steps {
+                script {
+                    sh """
+                        docker pull jerald04/jeroprac
+                        docker run -d -p 5000:5000 jerald04/jeroprac
+                    """
+                }
+            }
+        }
     }
 }
