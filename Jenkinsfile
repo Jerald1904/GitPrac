@@ -24,24 +24,14 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh """
-                        docker build -t jerald04/app:${env.BUILD_NUMBER} .
-                        docker tag jerald04/app:${env.BUILD_NUMBER} jerald04/app:latest
-                    """
-                }
-            }
-        }
         stage('Push to DockerHub') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh """
                             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                            docker push jerald04/app:${env.BUILD_NUMBER}
-                            docker push jerald04/app:latest
+                            docker push jerald04/jeroprac:${env.BUILD_NUMBER}
+                            docker push jerald04/jeroprac:latest
                         """
                     }
                 }
