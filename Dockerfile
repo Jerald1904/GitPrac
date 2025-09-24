@@ -1,6 +1,6 @@
-FROM python:3
-RUN mkdir -p /home/pyth
-COPY . /home/pyth
+FROM python:3.11-slim
+WORKDIR /app
+COPY pyth.py .
 RUN pip install flask
 EXPOSE 5000
 CMD ["python", "pyth.py"]
