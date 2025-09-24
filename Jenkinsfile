@@ -5,6 +5,15 @@ pipeline {
         jdk 'jdk-17'        // Name you configured under JDK in Jenkins
     }
     stages {
+        stage('Clear previous images and volumes') {
+            steps {
+                script {
+                    sh """
+                        docker system prune -af --volumes
+                    """
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'master1', url: 'https://github.com/Jerald1904/GitPrac.git'
